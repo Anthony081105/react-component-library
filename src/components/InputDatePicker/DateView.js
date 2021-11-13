@@ -10,7 +10,7 @@ function modulo(m, n) {
     return (m % n + n) % n;
 }
 function DateView(props) {
-    const { calendar, onSelectMonthYear } = props;
+    const { calendar, onSelectMonthYear, onTitleClick } = props;
     const { monthIndex, year } = calendar;
     // 月份切换事件函数
     const gotoOtherMonth = (direction) => {
@@ -25,7 +25,7 @@ function DateView(props) {
         <ViewLayout
             header={{
                 leftElement: <TertiaryButton icon='arrowleft' onClick={() => { gotoOtherMonth('prev') }}>←</TertiaryButton>,
-                middleElement: <p><HeaderTitle year={year} monthIndex={monthIndex}/></p>,
+                middleElement: <p><HeaderTitle year={year} monthIndex={monthIndex} onTitleClick={onTitleClick}/></p>,
                 rightElement: <TertiaryButton icon='arrowright' onClick={() => { gotoOtherMonth('next') }}>→</TertiaryButton>,
             }}
             bodyElement={
@@ -42,6 +42,7 @@ function DateView(props) {
 DateView.propTypes = {
     calendar: DatePicker.propTypes.calendar,
     onSelectMonthYear: PropTypes.func,
+    onTitleClick: PropTypes.func
 }
 
 export default DateView

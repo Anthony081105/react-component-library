@@ -1,4 +1,4 @@
-import { addDays, setDay, startOfWeek, format } from 'date-fns';
+import { addDays, setDay, startOfWeek, format, setMonth } from 'date-fns';
 import chunk from 'lodash/chunk';
 
 export function buildWeeks(year,monthIndex) {
@@ -20,4 +20,12 @@ export function buildDayNames(weekStartsOn){
             const day = setDay(new Date(0), dayofWeek);
             return format(day, "EEEEEE");
         })
+}
+
+export function buildMonths(){
+    const months = new Array(12)
+        .fill(0)
+        .map((_, i)=> setMonth(new Date(0), i))
+        .map((month, j)=> ({index:j ,name: format(month, 'MMMM')}))
+    return chunk(months, 3);
 }
