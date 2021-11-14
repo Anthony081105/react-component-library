@@ -23,6 +23,9 @@ function Calendar(props) {
     function onSelectMonth(selectedMonthIndex) {
         setCalendar({ ...calendar, monthIndex: selectedMonthIndex })
     }
+    function onSelectYear(selectedYear) {
+        setCalendar({ ...calendar, year: selectedYear })
+    }
     // 用于控制视图切换
     const onSetMonthYearView = setDateView.bind(null, false);
     const onSetDateView = setDateView.bind(null, true);
@@ -30,7 +33,7 @@ function Calendar(props) {
         <Picker>
             {isDateView ?
                 <DateView calendar={calendar} onSelectMonthYear={setCalendar} onTitleClick={onSetMonthYearView}/> :
-                <MonthYearView calendar={calendar} onSelectMonth={onSelectMonth} onBackClick={onSetDateView}/>}
+                <MonthYearView calendar={calendar} onSelectMonth={onSelectMonth} onSelectYear={onSelectYear} onBackClick={onSetDateView}/>}
         </Picker>
     )
 }
