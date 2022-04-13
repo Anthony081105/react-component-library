@@ -1,0 +1,36 @@
+@mixin button-size($padding-x,$padding-y,$font-size, $border-radius) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    border-radius: $border-radius;
+}
+
+@mixin button-style(
+    $backgroud,
+    $border,
+    $color,
+    $hover-backgroud:lighten($backgroud, 7.5%),
+    $hover-border: lighten($border, 10%),
+    $hover-color: $color,
+){
+    color: $color;
+    background: $backgroud;
+    border-color: $border;
+    &:hover {
+        color:$hover-color;
+        background: $hover-backgroud;
+        border-color: $hover-border;
+    }
+    &:focus,
+    &.focus {
+        color:$hover-color;
+        background: $hover-backgroud;
+        border-color: $hover-border;
+    }
+    &:disabled,
+    &.disabled {
+        color:$color;
+        background: $backgroud;
+        border-color: $border;
+    }
+    
+}

@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button, {ButtonType, ButtonSize} from './components/Button/button';
+
+
+export const ButtonPage = () => (
+  <div>
+    <div>
+      <p>基础 Button</p>
+      <div>
+        <Button onClick={()=>{console.log('点击！')}}>Hello World</Button>
+        <Button disabled>Disabled Button</Button>
+        <Button  size={ButtonSize.Large} className='testClassName'>
+          Large Button
+        </Button>
+        <Button  size={ButtonSize.Large} btnType={ButtonType.Primary}>
+          Large Primary Button
+        </Button>
+        <Button  size={ButtonSize.Large} btnType={ButtonType.Danger}>
+          Large DangerButton
+        </Button>
+        <Button  size={ButtonSize.Small}>
+          Small Button
+        </Button>
+        <Button btnType={ButtonType.Link} href="https://www.baidu.com" target='_blank'>
+          Link Button
+        </Button>
+        <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled>Disabld Link Button</Button>
+      </div>
+    </div>
+  </div>
+);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ButtonPage/>
     </div>
   );
 }
