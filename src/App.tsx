@@ -51,7 +51,7 @@ export const MenuPage = () => (
           onSelect={() => {
             console.log("触发select");
           }}
-          // mode="vertical"
+          mode="vertical"
         >
           <MenuItem>test link1</MenuItem>
           <MenuItem disabled>test link2</MenuItem>
