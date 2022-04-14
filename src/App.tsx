@@ -1,6 +1,7 @@
 import React from 'react';
 import Button, {ButtonType, ButtonSize} from './components/Button/button';
-
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menuItem';
 
 export const ButtonPage = () => (
   <div>
@@ -29,11 +30,25 @@ export const ButtonPage = () => (
     </div>
   </div>
 );
-
+export const MenuPage = () => (
+  <div>
+    <div>
+      <p>基础 Menu</p>
+      <div>
+        <Menu onSelect={()=>{console.log('触发select')}} mode="vertical">
+          <MenuItem >test link1</MenuItem>
+          <MenuItem  disabled>test link2</MenuItem>
+          <MenuItem >test link3</MenuItem>
+        </Menu>
+      </div>
+    </div>
+  </div>
+);
 function App() {
   return (
     <div className="App">
-      <ButtonPage/>
+      <ButtonPage/> 
+      <MenuPage/>
     </div>
   );
 }
