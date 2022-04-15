@@ -48,7 +48,7 @@
   .cherry-submenu {
     flex-direction: column;
     // 不用display控制是否显示, 用CSSTransition的属性控制元素是否存在
-    display: none;
+    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -64,7 +64,7 @@
     }
   }
   .cherry-submenu.menu-opened {
-      display: block;
+      // display: block;
   }
 }
 
