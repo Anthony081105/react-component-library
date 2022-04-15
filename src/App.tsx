@@ -47,11 +47,12 @@ export const MenuPage = () => (
       <p>基础 Menu</p>
       <div>
         <Menu
-          defaultIndex={2}
-          onSelect={() => {
-            console.log("触发select");
+          defaultIndex="2"
+          onSelect={(index) => {
+            console.log("触发select",index);
           }}
           mode="vertical"
+          defaultOpenSubMenus={["2"]}
         >
           <MenuItem>test link1</MenuItem>
           <MenuItem disabled>test link2</MenuItem>
