@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
-
+import Icon from "../Icon/icon";
 export interface subMenuProps {
   index?: string;
   title: string;
@@ -20,10 +20,13 @@ const SubMenu: React.FC<subMenuProps> = ({
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
   // 用于控制显隐
   const isOpened = (index && context.mode ==="vertical") ? openedSubMenus.includes(index):false;
+  const [menuOpen, setOpen] = useState(isOpened);
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": context.index === index,
+    // is-opended is-vertical 用于垂直模式下，下拉图标的动画效果的添加判定
+    "is-opened": menuOpen,
+    "is-vertical": context.mode === "vertical"
   });
-  const [menuOpen, setOpen] = useState(isOpened);
 
   // 纵向模式：通过点击，控制二级标题显隐
   const handleClick = (e: React.MouseEvent) => {
@@ -91,6 +94,7 @@ const SubMenu: React.FC<subMenuProps> = ({
     <li key={index} className={classes} {...hoverEvents}>
       <div className="submenu-title" onClick={handleClick} {...clickEvents}>
         {title}
+        <Icon icon="arrow-down" className="arrow-icon"/>
       </div>
       {renderChildren()}
     </li>
