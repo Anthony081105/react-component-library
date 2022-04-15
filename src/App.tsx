@@ -3,6 +3,7 @@ import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import Icon from "./components/Icon/icon";
 
 export const ButtonPage = () => (
   <div>
@@ -70,6 +71,8 @@ export const MenuPage = () => (
 function App() {
   return (
     <div className="App">
+      <Icon icon="coffee" theme="danger" size="10x"/>
+      <Icon icon="arrow-down" theme="danger" size="10x"/>
       <ButtonPage />
       <MenuPage />
     </div>
