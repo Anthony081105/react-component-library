@@ -52,7 +52,7 @@ export const MenuPage = () => (
           onSelect={(index) => {
             console.log("触发select",index);
           }}
-          mode="vertical"
+          // mode="vertical"
           defaultOpenSubMenus={["2"]}
         >
           <MenuItem>test link1</MenuItem>

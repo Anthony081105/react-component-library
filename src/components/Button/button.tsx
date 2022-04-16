@@ -14,12 +14,30 @@ export enum ButtonType {
 }
 
 interface BascButtonProps {
-  className?: string;
-  disabled?: boolean;
-  size?: ButtonSize;
-  btnType?: ButtonType;
-  children: React.ReactNode;
-  href?: string;
+  /**
+   * the size of this button
+   */
+   size?: ButtonSize;
+   /**
+    * the type of this button
+    */
+   btnType?: ButtonType;
+   /**
+    * whether the button can be clicked
+    */
+   disabled?: boolean;
+   /**
+    * button name
+    */
+   children: React.ReactNode;
+   /**
+    * href url
+    */
+   href?: string;
+   /**
+    * classes
+    */
+   className?: string;
 }
 
 // 联合类型 补充button及a标签原生属性的支持提示

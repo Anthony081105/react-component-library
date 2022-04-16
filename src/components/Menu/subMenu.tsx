@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
-import { CSSTransition } from "react-transition-group";
 import Icon from "../Icon/icon";
+import Transition from "../Transition/transition";
 export interface subMenuProps {
   index?: string;
   title: string;
@@ -89,9 +89,9 @@ const SubMenu: React.FC<subMenuProps> = ({
     });
     return (
       // CSSTransition 的 unmountOnExit 以达到关闭时，子节点DOM不渲染；进入时，子节点才渲染，从而减少了display：none控制显隐的必要性
-      <CSSTransition in={menuOpen} timeout={300} classNames="zoom-in-top" appear unmountOnExit>
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top" >
         <ul className={subMenuClasses}>{childrenComponent}</ul>
-      </CSSTransition>
+      </Transition>
     );
   };
 
