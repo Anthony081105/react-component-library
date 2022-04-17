@@ -1,70 +1,74 @@
-@mixin button-size($padding-x,$padding-y,$font-size, $border-radius) {
-    padding: $padding-y $padding-x;
-    font-size: $font-size;
-    border-radius: $border-radius;
+@mixin button-size($padding-x, $padding-y, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
 }
 
 @mixin button-style(
-    $backgroud,
-    $border,
-    $color,
-    $hover-backgroud:lighten($backgroud, 7.5%),
-    $hover-border: lighten($border, 10%),
-    $hover-color: $color,
-){
+  $backgroud,
+  $border,
+  $color,
+  $hover-backgroud: lighten($backgroud, 7.5%),
+  $hover-border: lighten($border, 10%),
+  $hover-color: $color
+) {
+  color: $color;
+  background: $backgroud;
+  border-color: $border;
+  &:hover {
+    color: $hover-color;
+    background: $hover-backgroud;
+    border-color: $hover-border;
+  }
+  &:focus,
+  &.focus {
+    color: $hover-color;
+    background: $hover-backgroud;
+    border-color: $hover-border;
+  }
+  &:disabled,
+  &.disabled {
     color: $color;
     background: $backgroud;
     border-color: $border;
-    &:hover {
-        color:$hover-color;
-        background: $hover-backgroud;
-        border-color: $hover-border;
-    }
-    &:focus,
-    &.focus {
-        color:$hover-color;
-        background: $hover-backgroud;
-        border-color: $hover-border;
-    }
-    &:disabled,
-    &.disabled {
-        color:$color;
-        background: $backgroud;
-        border-color: $border;
-    }
-    
+  }
+}
+
+@mixin alert-color($background, $color) {
+  color: $color;
+  background-color: $background;
 }
 
 @mixin zoom-animation(
-    $direction: 'top',
-    $scaleStart: scaleY(0),
-    $scaleEnd: scaleY(1),
-    $origin: center top
+  $direction: "top",
+  $scaleStart: scaleY(0),
+  $scaleEnd: scaleY(1),
+  $origin: center top
 ) {
-    .zoom-in-#{$direction}-enter,
-    .zoom-in-#{$direction}-appear {
-        opacity: 0;
-        transform: $scaleStart;
-    }
+  .zoom-in-#{$direction}-enter,
+  .zoom-in-#{$direction}-appear {
+    opacity: 0;
+    transform: $scaleStart;
+  }
 
-    .zoom-in-#{$direction}-enter-active,
-    .zoom-in-#{$direction}-appear-active {
-        opacity: 1;
-        transform: $scaleEnd;
-        transform-origin: $origin;
-        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-        opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    }
+  .zoom-in-#{$direction}-enter-active,
+  .zoom-in-#{$direction}-appear-active {
+    opacity: 1;
+    transform: $scaleEnd;
+    transform-origin: $origin;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  }
 
-    .zoom-in-#{$direction}-exit {
-        opacity: 1;
-    }
+  .zoom-in-#{$direction}-exit {
+    opacity: 1;
+  }
 
-    .zoom-in-#{$direction}-exit-active {
-        opacity: 0;
-        transform: $scaleStart;
-        transform-origin: $origin;
-        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-        opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    }
+  .zoom-in-#{$direction}-exit-active {
+    opacity: 0;
+    transform: $scaleStart;
+    transform-origin: $origin;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  }
 }

@@ -210,7 +210,7 @@ $btn-link-color: $link-color !default;
 $btn-link-hover-color: $link-hover-color !default;
 $btn-link-disabled-color: $gray-600 !default;
 
-//按钮 radius
+// 按钮 radius
 $btn-border-radius: $border-radius !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 $btn-border-radius-sm: $border-radius-sm !default;
@@ -223,9 +223,28 @@ $menu-border-color: $border-color !default;
 $menu-box-shadow: inset 0 1px rgba($white, 0.15), 0 1px 1px rgba($black, 0.08);
 $menu-transition: color .15s ease-in-out, border-color .15s ease-in-out;
 
-//menu-item
+// menu-item
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
 $menu-item-active-color: $primary !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
+
+
+// Alert
+ $alert-border-radius: .4rem !default;
+ $alert-padding-y: .375rem !default;
+ $alert-padding-x: .75rem !default;
+ 
+ $alert-width: 30rem;
+ $alert-line-height: $line-height-lg;
+ 
+ $alert-title-font-size: $font-size-base * 1.2 !default;
+ $alert-message-font-size: $font-size-base !default;
+ 
+ $alert-icon-right: 1rem;
+ $alert-icon-top: .5rem;
+ 
+ $alert-icon-font-weight: $font-weight-normal;
+ $alert-icon-font-size: $sub-sup-font-size;
+ 
