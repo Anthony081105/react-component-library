@@ -1,91 +1,78 @@
-import React from "react";
-import classNames from "classnames";
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
+import classNames from 'classnames'
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-  Default = "default",
+export type ButtonSize = 'lg' | 'sm'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
+// export enum ButtonSize {
+//   Large = 'lg',
+//   Small = 'sm'
+// }
+
+// export enum ButtonType {
+//   Primary = 'primary',
+//   Default = 'default',
+//   Danger = 'danger',
+//   Link = 'link',
+// }
+
+interface BaseButtonProps {
+  className?: string;
+  /**设置 Button 的禁用 */
+  disabled?: boolean;
+  /**设置 Button 的尺寸 */
+  size?: ButtonSize;
+  /**设置 Button 的类型 */
+  btnType?: ButtonType;
+  children: React.ReactNode;
+  href?: string;
 }
 
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
-
-interface BascButtonProps {
-  /**
-   * the size of this button
-   */
-   size?: ButtonSize;
-   /**
-    * the type of this button
-    */
-   btnType?: ButtonType;
-   /**
-    * whether the button can be clicked
-    */
-   disabled?: boolean;
-   /**
-    * button name
-    */
-   children: React.ReactNode;
-   /**
-    * href url
-    */
-   href?: string;
-   /**
-    * classes
-    */
-   className?: string;
-}
-
-// 联合类型 补充button及a标签原生属性的支持提示
-type NativeButtonProps = BascButtonProps &
-  React.ButtonHTMLAttributes<HTMLElement>;
-type AnchorButtonProps = BascButtonProps &
-  React.AnchorHTMLAttributes<HTMLElement>;
-
-// Partial 使得其泛型属性中包含的属性全为可选属性
-export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
-
-const Button: React.FC<ButtonProps> = (props) => {
-  const {
-    btnType,
-    className,
-    disabled,
-    size,
-    children,
-    href,
-    ...restProps
-  } = props;
-
-  // btn
-  const classes = classNames("btn", className, {
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
+/**
+ * 页面中最常用的的按钮元素，适合于完成特定的交互，支持 HTML button 和 a 链接 的所有属性
+ * ### 引用方法
+ *
+ * ~~~js
+ * import { Button } from 'vikingship-ui'
+ * ~~~
+ */
+export const Button: FC<ButtonProps> = (props) => {
+  const { btnType, disabled, size, children, className, href, ...restProps } = props
+  // btn, btn-lg, btn-primary
+  const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: disabled,
-  });
+    'disabled': (btnType === 'link') && disabled
+  })
 
-  if (btnType === ButtonType.Link) {
+  if (btnType === 'link' && href) {
     return (
-      <a className={classes} href={href} {...restProps}>
+      <a
+        className={classes}
+        href={href}
+        {...restProps}
+      >
         {children}
       </a>
-    );
+    )
   } else {
     return (
-      <button className={classes} disabled={disabled} {...restProps}>
+      <button
+        className={classes}
+        disabled={disabled}
+        {...restProps}
+      >
         {children}
       </button>
-    );
+    )
   }
-};
+}
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
-};
+  btnType: 'default'
+}
 
 export default Button;
