@@ -11,7 +11,7 @@ export const parameters = {
 
 const wrapperStyle: React.CSSProperties = {
   padding: '20px 40px',
-  // width: '500px'
+  width: '500px'
   // background: 'pink'
 }
 // 定义内容居中的组件
