@@ -3,17 +3,6 @@ import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
-// export enum ButtonSize {
-//   Large = 'lg',
-//   Small = 'sm'
-// }
-
-// export enum ButtonType {
-//   Primary = 'primary',
-//   Default = 'default',
-//   Danger = 'danger',
-//   Link = 'link',
-// }
 
 interface BaseButtonProps {
   className?: string;
@@ -24,6 +13,7 @@ interface BaseButtonProps {
   /**设置 Button 的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
+  /**设置 Link 类型的跳转链接 */
   href?: string;
 }
 
@@ -32,11 +22,6 @@ type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 /**
  * 页面中最常用的的按钮元素，适合于完成特定的交互，支持 HTML button 和 a 链接 的所有属性
- * ### 引用方法
- *
- * ~~~js
- * import { Button } from 'vikingship-ui'
- * ~~~
  */
 export const Button: FC<ButtonProps> = (props) => {
   const { btnType, disabled, size, children, className, href, ...restProps } = props

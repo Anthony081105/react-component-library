@@ -1,16 +1,31 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-import Alert from "./alert";
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import Alert from './alert'
 
-const AlertPage = () => (
-  <div>
-    <Alert type="success" title="测试">
-      Alert组件
-    </Alert>
-    <Alert type="primary">Alert组件</Alert>
-    <Alert type="warning">Alert组件</Alert>
-    <Alert type="danger">Alert组件</Alert>
-  </div>
-);
-storiesOf("Alert组件 Test",module).add('测试Alert',AlertPage);
+export const defaultAlert = () => (
+  <Alert closable title="this is alert!" type="primary" />
+)
+
+export const alertWithType = () => (
+  <>
+    <Alert type="success" closable title="this is Success" />
+    <Alert type="danger" closable title="this is Danger!" />
+    <Alert type="warning" closable={false} title="this is Warning!" />
+  </>
+)
+
+export const alertWithChildren = () => (
+  <Alert
+    type="primary"
+    closable
+    title="提示标题"
+    children="this is a long description"
+    onClose={function noRefCheck(){}}
+  />
+)
+
+storiesOf('Alert Component', module)
+  .add('Alert', defaultAlert)
+  .add('不同样式的 Alert', alertWithType)
+  .add('添加描述的 Alert', alertWithChildren)

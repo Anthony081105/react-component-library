@@ -5,12 +5,15 @@ import { MenuItemProps } from "./menuItem";
 import Icon from "../Icon/icon";
 import Transition from "../Transition/transition";
 export interface subMenuProps {
+  /** 默认索引 */
   index?: string;
+  /** 	下拉菜单选项的文字 */
   title: string;
+  /** 下拉菜单选型的扩展类名 */
   className?: string;
 }
 
-const SubMenu: React.FC<subMenuProps> = ({
+export const SubMenu: React.FC<subMenuProps> = ({
   index,
   title,
   children,
