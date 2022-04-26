@@ -2,9 +2,13 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import Button from './button'
+import ConfigProvider from '../ConfigProvider'
 
 const defaultButton = () => (
-  <Button onClick={action('clicked')}>Default button</Button>
+  <ConfigProvider colors={["#e01212",'#ca0909']}>
+    <Button onClick={action('clicked')}>Default button</Button>
+  </ConfigProvider>
+  
 )
 
 const buttonWithSize = () => (
