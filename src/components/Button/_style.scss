@@ -47,21 +47,71 @@
 }
 
 .btn-primary {
-  @include button-style($primary, $primary, $white);
+  color: $white;
+  background: $primary;
+  border-color: $primary;
+  &:hover {
+    color: $white;
+    background: lighten($primary, 10%);
+    border-color: lighten($primary,7.5%);
+  }
+  &:focus,
+  &.focus {
+    color: $white;
+    background: lighten($primary, 10%);
+    border-color: lighten($primary,7.5%);
+  }
+  &:disabled,
+  &.disabled {
+    color: $white;
+    background: $primary;
+    border-color: $primary;
+  }
 }
 .btn-danger {
-  @include button-style($danger, $danger, $white);
+  color: $white;
+  background: $danger;
+  border-color: $danger;
+  &:hover {
+    color: $white;
+    background: lighten($danger, 10%);
+    border-color: lighten($danger,7.5%);
+  }
+  &:focus,
+  &.focus {
+    color: $white;
+    background: lighten($danger, 10%);
+    border-color: lighten($danger,7.5%);
+  }
+  &:disabled,
+  &.disabled {
+    color: $white;
+    background: $danger;
+    border-color: $danger;
+  }
 }
 
 .btn-default {
-  @include button-style(
-    $white,
-    $gray-400,
-    $body-color,
-    $white,
-    $primary,
-    $primary
-  );
+  color: $body-color;
+  background: $white;
+  border-color: $gray-400;
+  &:hover {
+    color: $primary;
+    background: var(--btn-default-hover-background,lighten($white, 10%));
+    border-color: lighten($primary,7.5%);
+  }
+  &:focus,
+  &.focus {
+    color: $primary;
+    background: lighten($white, 10%);
+    border-color: lighten($primary,7.5%);
+  }
+  &:disabled,
+  &.disabled {
+    color: $body-color;
+    background: $white;
+    border-color: $gray-400;
+  }
 }
 
 .btn-link {
