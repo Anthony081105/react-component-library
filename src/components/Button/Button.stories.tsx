@@ -27,7 +27,17 @@ const buttonWithType = () => (
   </>
 )
 
+const buttonWithTypeAndDisabled = () => (
+  <>
+    <Button btnType="primary" disabled>Primary button</Button>
+    <Button btnType="default" disabled>Default Button</Button>
+    <Button btnType="danger" disabled>Danger button</Button>
+    <Button btnType="link" href="https://google.com" disabled>Link button</Button>
+  </>
+)
+
 storiesOf('Button Component', module)
   .add('Button', defaultButton)
   .add('不同尺寸的 Button', buttonWithSize)
   .add('不同类型的 Button', buttonWithType)
+  .add('不同类型的禁用 Button', buttonWithTypeAndDisabled)

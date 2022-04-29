@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,FC } from "react";
 import classnames from "classnames";
 import Transition from "../Transition/transition";
 import Icon from "../Icon/icon";
@@ -35,7 +35,7 @@ export interface IAlertProps {
 /**
  * This is an alert component. It can have multiple props like title, type, closeable,customClose.
  */
-const Alert: React.FC<IAlertProps> = ({
+ export const Alert: FC<IAlertProps> = ({
   title,
   closable = true,
   type = "primary",

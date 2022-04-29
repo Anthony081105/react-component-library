@@ -93,7 +93,7 @@
 
 .btn-default {
   color: $body-color;
-  background: $white;
+  background: var(--btn-default-background,$white);
   border-color: $gray-400;
   &:hover {
     color: $primary;
