@@ -7,27 +7,27 @@ export type AlertType = "success" | "primary" | "warning" | "danger";
 
 export interface IAlertProps {
   /**
-   * the title
+   * 标题
    */
   title?: string;
   /**
-   * whether this alert can close.
+   * 按钮是否可关闭
    */
   closable?: boolean;
   /**
-   * the close icon
+   * 自定义关闭按钮
    */
   customClose?: string;
   /**
-   * onClose action
+   * 关闭按钮的回调
    */
   onClose?: () => void;
   /**
-   * the description of this alert
+   * 描述信息
    */
   children?: React.ReactNode;
   /**
-   * alert type
+   * 类型
    */
   type: AlertType;
 }

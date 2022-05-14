@@ -10,6 +10,11 @@ const defaultInput = () => (
       placeholder="placeholder"
       onChange={action('changed')}
     />
+    <Input
+    style={{width: '300px'}}
+    placeholder="disabled input"
+    disabled
+  />
   </>
 )
 const inputWithDisabled = () => (

@@ -23,10 +23,12 @@ const defaultIcon = () => (
 
 const iconWithTheme = () => (
   <>
-    <Icon icon="check" size="3x" theme="success" />
-    <Icon icon="times" size="3x" theme="danger" />
-    <Icon icon="anchor" size="3x" theme="primary" />
+    <Icon icon="check" size="3x" theme="primary" />
+    <Icon icon="info" size="3x" theme="secondary" />
+    <Icon icon="tree" size="3x" theme="success" />
+    <Icon icon="umbrella" size="3x" theme="info" />
     <Icon icon="exclamation-circle" size="3x" theme="warning" />
+    <Icon icon="spinner" size="3x" spin theme="danger" />
   </>
 )
 

@@ -6,7 +6,19 @@ const defaultProcess = () => <Progress percent={20} />;
 
 const withTextProcess = () => <Progress percent={50} showText={false} />;
 
-const strokeHeightProcess = () => <Progress percent={50} strokeHeight={50} />;
+const strokeHeightProcess = () => (
+  <div>
+    <div style={{marginBottom:10}}>
+      <Progress percent={20} strokeHeight={20} />
+    </div>
+    <div style={{marginBottom:10}}>
+      <Progress percent={50} strokeHeight={50} />
+    </div>
+    <div>
+      <Progress percent={70} strokeHeight={70} />
+    </div>
+  </div>
+);
 const difThemesProcess = () => (
   <div>
     <Progress percent={10}  styles={{marginBottom:3}}/>
