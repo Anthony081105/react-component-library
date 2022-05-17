@@ -18,7 +18,7 @@ export const UploadList: FC<UploadListProps> = (props) => {
     <ul className="cherry-upload-list">
       {fileList.map(item => {
         return (
-          <li className="cherry-upload-list-item" key={item.uid}>
+          <li className="cherry-upload-list-item" key={item.uid} id={item.uid}>
             <span className={`file-name file-name-${item.status}`}>
               <Icon icon="file-alt" theme="secondary" />
               {item.name}

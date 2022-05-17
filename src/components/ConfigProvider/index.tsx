@@ -2,7 +2,7 @@ import React from 'react';
 import gradientColor from './gradient';
 
 const configure = {
-    colors:['默认无颜色'],
+    colors:[''],
 };
 
 export const ConfigContext = React.createContext(configure);
@@ -19,9 +19,8 @@ export const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
     } = props;
 
     if (colors) {
-        let gradientColors = gradientColor(colors[0],colors[1],10);
+        let gradientColors = gradientColor(colors[0],colors[1],4);
         console.log('颜色',gradientColors);
-        
         configure.colors = gradientColors;
     }
     

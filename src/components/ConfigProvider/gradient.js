@@ -57,6 +57,7 @@ function colorRgb(sColor) {
 
 // 将rgb表示方式转换为hex表示方式
 function colorHex(rgb) {
+  console.log('转换rgb',rgb);
   var _this = rgb;
   var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
   if (/^(rgb|RGB)/.test(_this)) {
@@ -73,6 +74,7 @@ function colorHex(rgb) {
     if (strHex.length !== 7) {
       strHex = _this;
     }
+    console.log('return1',strHex);
     return strHex;
   } else if (reg.test(_this)) {
     var aNum = _this.replace(/#/, "").split("");
@@ -83,6 +85,7 @@ function colorHex(rgb) {
       for (var i = 0; i < aNum.length; i += 1) {
         numHex += aNum[i] + aNum[i];
       }
+      console.log('returnhex',numHex);
       return numHex;
     }
   } else {

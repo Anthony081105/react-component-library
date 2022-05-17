@@ -30,7 +30,7 @@ export const Button: FC<ButtonProps> = (props) => {
     props;
   // 用于色彩变幻的configure
   let configure = useContext(ConfigContext);
-  
+  const {colors} = configure;
   // btn, btn-lg, btn-primary
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
@@ -39,20 +39,18 @@ export const Button: FC<ButtonProps> = (props) => {
   });
   useEffect(()=>{
     const {colors} = configure;
-    console.log('计算后的colors',colors);
-    
     if(colors.length >= 2){
       for (let i = 0; i < document.getElementsByClassName("btn").length; i++) {
         let dom = document.getElementsByClassName("btn")[i] as HTMLElement;
         // 避免多余的换色操作
-        if(dom.style.getPropertyValue("--btn-default-background")==="red") continue;
-
-        dom.style.setProperty("--btn-default-background", "red");
+        if(dom.style.getPropertyValue("--btn-default-background")===colors[3]) continue;
+        dom.style.setProperty("--btn-default-background", colors[3]);
         console.log('执行换色',dom,"个数",document.getElementsByClassName("btn").length,dom.style.getPropertyValue("--textcolor"));
       }
     }
   })
-
+  console.log('colors',colors);
+  
   if (btnType === "link" && href) {
     return (
       <a className={classes} href={href} {...restProps}>

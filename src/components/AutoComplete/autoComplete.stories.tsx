@@ -67,6 +67,7 @@ const SimpleComplete = () => {
 }
 
 const SelfRenderAutoComplete = () => {
+  // 源数据
   const lakersWithNumber = [
     {value: 'bradley', number: 11},
     {value: 'pope', number: 1},
@@ -79,9 +80,11 @@ const SelfRenderAutoComplete = () => {
     {value: 'howard', number: 39},
     {value: 'kuzma', number: 0},
   ] 
+  // 筛选目的内容
   const handleFetch = (query: string) => {
     return lakersWithNumber.filter(player => player.value.includes(query))
   }
+  // 自定义渲染
   const renderOption = (item: DataSourceType) => {
     const itemWithNumber = item as DataSourceType<LakerPlayerProps>
     return (
