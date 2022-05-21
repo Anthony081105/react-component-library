@@ -51,7 +51,6 @@ export const Button: FC<ButtonProps> = (props) => {
       }
     }
   })
-  console.log('colors',colors);
   
   if (btnType === "link" && href) {
     return (

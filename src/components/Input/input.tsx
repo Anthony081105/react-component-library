@@ -3,10 +3,13 @@ import React, {
   ReactElement,
   FC,
   ChangeEvent,
+  useContext,
+  useEffect,
 } from "react";
 import classNames from "classnames";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Icon from "../Icon/icon";
+import { ConfigContext, configContext} from "../ConfigProvider/index";
 
 type InputSize = "lg" | "sm";
 export interface InputProps
@@ -33,7 +36,7 @@ export const Input: FC<InputProps> = (props) => {
     "input-group-append": !!append,
     "input-group-prepend": !!prepend,
   });
-
+  let configure = useContext(ConfigContext);
   // 用于清除原生value属性对defaultValue的影响
   const fixControlledValue = (value: any) => {
     if (typeof value === "undefined" || value === null) {
@@ -46,7 +49,18 @@ export const Input: FC<InputProps> = (props) => {
     delete restProps.defaultValue;
     restProps.value = fixControlledValue(props.value);
   }
-
+  useEffect(()=>{
+    const {colors} = configure;
+    if(colors.length>2){
+      let inputDOMs = document.getElementsByClassName("cherry-input-inner");
+      for (let i = 0; i < inputDOMs.length; i++) {
+        let dom = inputDOMs[i] as HTMLElement;
+        // 避免多余的换色操作
+        if(dom.style.getPropertyValue("--input-focus")===colors[1]) continue;
+        dom.style.setProperty("--input-focus", colors[1]);
+      }
+    }
+  })
   return (
     <div className={classes} style={style}>
       {prepend && <div className="cherry-input-group-prepend">{prepend}</div>}

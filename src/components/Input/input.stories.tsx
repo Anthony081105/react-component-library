@@ -2,20 +2,23 @@ import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Input } from './input'
+import ConfigProvider from '../ConfigProvider'
 
 const defaultInput = () => (
-  <>
-    <Input
+  <ConfigProvider colors={["#fff",'#31d131']}>
+    <div>
+      <Input
+        style={{width: '300px'}}
+        placeholder="placeholder"
+        onChange={action('changed')}
+      />
+      <Input
       style={{width: '300px'}}
-      placeholder="placeholder"
-      onChange={action('changed')}
+      placeholder="disabled input"
+      disabled
     />
-    <Input
-    style={{width: '300px'}}
-    placeholder="disabled input"
-    disabled
-  />
-  </>
+    </div>
+  </ConfigProvider>
 )
 const inputWithDisabled = () => (
   <Input
