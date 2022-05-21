@@ -43,8 +43,10 @@ export const Button: FC<ButtonProps> = (props) => {
       for (let i = 0; i < document.getElementsByClassName("btn").length; i++) {
         let dom = document.getElementsByClassName("btn")[i] as HTMLElement;
         // 避免多余的换色操作
-        if(dom.style.getPropertyValue("--btn-default-background")===colors[3]) continue;
-        dom.style.setProperty("--btn-default-background", colors[3]);
+        if(dom.style.getPropertyValue("--btn-primary")===colors[3]) continue;
+        dom.style.setProperty("--btn-primary", colors[3]);
+        if(dom.style.getPropertyValue("--btn-primary-hover")===colors[2]) continue;
+        dom.style.setProperty("--btn-primary-hover", colors[2]);
         console.log('执行换色',dom,"个数",document.getElementsByClassName("btn").length,dom.style.getPropertyValue("--textcolor"));
       }
     }

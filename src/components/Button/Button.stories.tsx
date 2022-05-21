@@ -5,7 +5,7 @@ import Button from './button'
 import ConfigProvider from '../ConfigProvider'
 
 const defaultButton = () => (
-  <ConfigProvider colors={["#e01212",'#ca0909']}>
+  <ConfigProvider colors={["#fff",'#31d131']}>
     <Button onClick={action('clicked')}>Default button</Button>
   </ConfigProvider>
   
@@ -19,12 +19,14 @@ const buttonWithSize = () => (
 )
 
 const buttonWithType = () => (
-  <>
-    <Button btnType="primary">Primary button</Button>
-    <Button btnType="default">Default Button</Button>
-    <Button btnType="danger">Danger button</Button>
-    <Button btnType="link" href="https://google.com">Link button</Button>
-  </>
+  <ConfigProvider colors={["#fff",'#36d627']}>
+    <div>
+      <Button btnType="primary">Primary button</Button>
+      <Button btnType="default">Default Button</Button>
+      <Button btnType="danger">Danger button</Button>
+      <Button btnType="link" href="https://google.com">Link button</Button>
+    </div>
+  </ConfigProvider>
 )
 
 const buttonWithTypeAndDisabled = () => (
