@@ -1,14 +1,18 @@
 .cherry-auto-complete {
   position: relative;
+  .cherry-input-wrapper {
+    margin-bottom: 0;
+  }
 }
 .cherry-suggestion-list {
+  position: absolute !important;
   list-style: none;
   padding-left: 0;
   white-space: nowrap;
   position: absolute;
   background: $white;
   z-index: 100;
-  top: calc(100% + 8px);
+  // top: calc(100% + 8px);
   left: 0;
   border: $menu-border-width solid $menu-border-color;
   box-shadow: $submenu-box-shadow;

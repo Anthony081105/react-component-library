@@ -40,46 +40,72 @@ const AsyncAutoComplete = () => {
     />
   )
 }
+
+const createFakeList = (length)=>{
+  let res = [];
+  for(let i = 0;i<length;i++){
+    res.push({value:`1${i}`,number:i})
+  }
+  return res;
+}
+const lakersWithNumber = [
+  {value: 'bradley', number: 11},
+  {value: 'pope', number: 1},
+  {value: 'caruso', number: 4},
+  {value: 'cook', number: 2},
+  {value: 'cousins', number: 15},
+  {value: 'james', number: 23},
+  {value: 'AD', number: 3},
+  {value: 'green', number: 14},
+  {value: 'howard', number: 39},
+  {value: 'kuzma', number: 0},
+  {value: 'abradley', number: 111},
+  {value: 'apope', number: 11},
+  {value: 'acaruso', number: 14},
+  {value: 'acook', number: 12},
+  {value: 'acousins', number: 115},
+  {value: 'ajames', number: 123},
+  {value: 'aAD', number: 13},
+  {value: 'agreen', number: 114},
+  {value: 'ahoward', number: 139},
+  {value: 'akuzma', number: 101},
+  {value: 'aabradley', number: 1111},
+  {value: 'aapope', number: 111},
+  {value: 'aacaruso', number: 141},
+  {value: 'aacook', number: 121},
+  {value: 'aacousins', number: 1151},
+  {value: 'aajames', number: 1231},
+  {value: 'aaAD', number: 131},
+  {value: 'aagreen', number: 1141},
+  {value: 'aahoward', number: 1391},
+  {value: 'aakuzma', number: 101},
+]
 const SimpleComplete = () => {
 
-  const lakersWithNumber = [
-    {value: 'bradley', number: 11},
-    {value: 'pope', number: 1},
-    {value: 'caruso', number: 4},
-    {value: 'cook', number: 2},
-    {value: 'cousins', number: 15},
-    {value: 'james', number: 23},
-    {value: 'AD', number: 3},
-    {value: 'green', number: 14},
-    {value: 'howard', number: 39},
-    {value: 'kuzma', number: 0},
-  ]
-
   const handleFetch = (query: string) => {
-    return lakersWithNumber.filter(player => player.value.includes(query))
+    // return lakersWithNumber.filter(player => player.value.includes(query))
+    return createFakeList(1000).filter(player => player.value.includes(query));
+  }
+  const renderOption = (item: DataSourceType) => {
+    const itemWithNumber = item as DataSourceType<LakerPlayerProps>
+    return (
+      <>
+        <b>当前值: {itemWithNumber.value}</b>
+        <span>当前列索引号: {itemWithNumber.number}</span>
+      </>
+    )
   }
   return (
     <AutoComplete
+      maxSize={10}
       fetchSuggestions={handleFetch}
       onSelect={action('selected')}
+      renderOption={renderOption}
     />
   )
 }
 
 const SelfRenderAutoComplete = () => {
-  // 源数据
-  const lakersWithNumber = [
-    {value: 'bradley', number: 11},
-    {value: 'pope', number: 1},
-    {value: 'caruso', number: 4},
-    {value: 'cook', number: 2},
-    {value: 'cousins', number: 15},
-    {value: 'james', number: 23},
-    {value: 'AD', number: 3},
-    {value: 'green', number: 14},
-    {value: 'howard', number: 39},
-    {value: 'kuzma', number: 0},
-  ] 
   // 筛选目的内容
   const handleFetch = (query: string) => {
     return lakersWithNumber.filter(player => player.value.includes(query))

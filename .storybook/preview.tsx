@@ -9,6 +9,7 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' }
 }
 
+// 需要添加的全局样式包裹
 const wrapperStyle: React.CSSProperties = {
   padding: '20px 40px',
   width: '500px'
