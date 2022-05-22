@@ -1,7 +1,9 @@
 .alert {
     display: block;
     width: $alert-width;
-    @include alert-color($primary, $white);
+    // @include alert-color($primary, $white);
+    color: $white;
+    background-color: var(--alert-primary,$primary);
     border-radius: $alert-border-radius;
     border-width:$border-width;
     border-style: solid;

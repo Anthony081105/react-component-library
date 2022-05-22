@@ -1,7 +1,8 @@
-import React, { useState,FC } from "react";
+import React, { useState,FC,useContext, useEffect } from "react";
 import classnames from "classnames";
 import Transition from "../Transition/transition";
 import Icon from "../Icon/icon";
+import { ConfigContext } from "../ConfigProvider";
 
 export type AlertType = "success" | "primary" | "warning" | "danger";
 
@@ -56,7 +57,19 @@ export interface IAlertProps {
       onClose();
     }
   };
-
+  let configure = useContext(ConfigContext);
+  useEffect(()=>{
+    const {colors} = configure;
+    let alertDOMs = document.getElementsByClassName("alert-primary");
+    if(colors.length >= 2){
+      for (let i = 0; i < alertDOMs.length; i++) {
+        let dom = alertDOMs[i] as HTMLElement;
+        // 避免多余的换色操作
+        if(dom.style.getPropertyValue("--alert-primary")===colors[3]) continue;
+        dom.style.setProperty("--alert-primary", colors[3]);
+      }
+    }
+  })
   const [visible, setVisible] = useState(true);
   return (
     <Transition

@@ -2,9 +2,12 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import Alert from './alert'
+import ConfigProvider from '../ConfigProvider'
 
 export const defaultAlert = () => (
-  <Alert closable title="this is alert!" type="primary" />
+  <ConfigProvider colors={["#fff",'#31d131']}>
+    <Alert closable title="this is alert!" type="primary" />
+  </ConfigProvider>
 )
 
 export const alertWithType = () => (
