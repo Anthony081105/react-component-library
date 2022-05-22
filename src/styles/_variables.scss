@@ -31,7 +31,7 @@ $light: $gray-100 !default;
 $dark: $gray-800 !default;
 
 $theme-colors: (
-  "primary": var(--icon-primary,$primary),
+  "primary": var(--theme-primary,$primary),
   "secondary": $secondary,
   "success": $success,
   "info": $info,

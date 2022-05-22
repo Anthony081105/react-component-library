@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC,useContext,useEffect } from 'react'
 import { ThemeProps } from '../Icon/icon'
-
+import {ConfigContext} from "../ConfigProvider/index";
 export interface ProgressProps {
   /** 当前百分比 */
   percent: number;
@@ -22,7 +22,19 @@ const Progress: FC<ProgressProps> = (props) => {
     styles,
     theme,
   } = props
-
+  let configure = useContext(ConfigContext);
+  useEffect(()=>{
+    const {colors} = configure;
+    let iconDOMs = document.getElementsByClassName("color-primary");
+    if(colors.length >= 2){
+      for (let i = 0; i < iconDOMs.length; i++) {
+        let dom = iconDOMs[i] as HTMLElement;
+        // 避免多余的换色操作
+        if(dom.style.getPropertyValue("--theme-primary")===colors[3]) continue;
+        dom.style.setProperty("--theme-primary", colors[3]);
+      }
+    }
+  })
   return (
     <div className="cherry-progress-bar" style={styles}>
       <div className="cherry-progress-bar-outer" style={{ height: `${strokeHeight}px`}}>

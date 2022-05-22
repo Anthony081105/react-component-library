@@ -30,8 +30,8 @@ export const Icon: React.FC<IconProps> = (props) => {
       for (let i = 0; i < iconDOMs.length; i++) {
         let dom = iconDOMs[i] as HTMLElement;
         // 避免多余的换色操作
-        if(dom.style.getPropertyValue("--icon-primary")===colors[3]) continue;
-        dom.style.setProperty("--icon-primary", colors[3]);
+        if(dom.style.getPropertyValue("--menu-item-active-color")===colors[3]) continue;
+        dom.style.setProperty("--menu-item-active-color", colors[3]);
       }
     }
   })

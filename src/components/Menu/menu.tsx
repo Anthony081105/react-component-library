@@ -1,6 +1,7 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext,useContext,useEffect } from "react";
 import classNames from "classnames";
 import {MenuItemProps} from './menuItem';
+import {ConfigContext} from "../ConfigProvider/index";
 
 // 字符串字面量
 type MenuMode = "horizontal" | "vertical";
@@ -63,7 +64,20 @@ export const Menu: React.FC<MenuProps> = (props) => {
         console.error("Warning: Menu has a child which is not a MenuItem component");
       }
     })
-  } 
+  }
+  let configure = useContext(ConfigContext);
+  useEffect(()=>{
+    const {colors} = configure;
+    let menuItemDOMS = document.getElementsByClassName("menu-item");
+    if(colors.length >= 2){
+      for (let i = 0; i < menuItemDOMS.length; i++) {
+        let dom = menuItemDOMS[i] as HTMLElement;
+        // 避免多余的换色操作
+        if(dom.style.getPropertyValue("--menu-item-active-color")===colors[3]) continue;
+        dom.style.setProperty("--menu-item-active-color", colors[3]);
+      }
+    }
+  })
   return (
     <ul className={classes} style={style}>
       <MenuContext.Provider value={passedContext}>

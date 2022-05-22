@@ -4,27 +4,32 @@ import { action } from '@storybook/addon-actions'
 import Menu from './menu'
 import MenuItem from './menuItem'
 import SubMenu from './subMenu'
+import {ConfigProvider} from "../ConfigProvider/index";
 
 export const defaultMenu = () => (
-  <Menu onSelect={(index) => {action(`clicked ${index} item`)}} >
-    <MenuItem>
-      cool link
-    </MenuItem>
-    <MenuItem disabled>
-      disabled
-    </MenuItem>
-    <MenuItem>
-      cool link 2
-    </MenuItem>
-    <SubMenu title="下拉选项">
+<ConfigProvider colors={["#fff",'#31d131']}>
+  <div>
+    <Menu onSelect={(index) => {action(`clicked ${index} item`)}}>
       <MenuItem>
-        下拉选项一
+        cool link
+      </MenuItem>
+      <MenuItem disabled>
+        disabled
       </MenuItem>
       <MenuItem>
-        下拉选项二
+        cool link 2
       </MenuItem>
-    </SubMenu>
-  </Menu>
+      <SubMenu title="下拉选项">
+        <MenuItem>
+          下拉选项一
+        </MenuItem>
+        <MenuItem>
+          下拉选项二
+        </MenuItem>
+      </SubMenu>
+    </Menu>
+  </div>
+</ConfigProvider>
 )
 
 export const menuWithVertical = () => (

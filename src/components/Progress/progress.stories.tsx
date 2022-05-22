@@ -1,8 +1,15 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import Progress from "./progress";
+import ConfigProvider from "../ConfigProvider";
 
-const defaultProcess = () => <Progress percent={20} />;
+const defaultProcess = () => 
+  (<ConfigProvider colors={["#fff",'#31d131']}>
+    <div>
+      <Progress percent={20} />;
+    </div>
+  </ConfigProvider>)
+
 
 const withTextProcess = () => <Progress percent={50} showText={false} />;
 
