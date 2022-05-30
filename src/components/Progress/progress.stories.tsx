@@ -6,9 +6,9 @@ import ConfigProvider from "../ConfigProvider";
 const defaultProcess = () => 
   (<ConfigProvider colors={["#fff",'#31d131']}>
     <div>
-      <Progress percent={20} />;
+      <Progress percent={20} />
     </div>
-  </ConfigProvider>)
+   </ConfigProvider>)
 
 
 const withTextProcess = () => <Progress percent={50} showText={false} />;

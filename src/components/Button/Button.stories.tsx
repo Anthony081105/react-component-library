@@ -14,12 +14,13 @@ const defaultButton = () => (
 const buttonWithSize = () => (
   <>
     <Button size="lg">Large button</Button>
+    <Button>Defualt button</Button>
     <Button size="sm">Small button</Button>
   </>
 )
 
 const buttonWithType = () => (
-  <ConfigProvider colors={["#fff",'#36d627']}>
+  <ConfigProvider colors={["#fff",'#31d131']}>
     <div>
       <Button btnType="primary">Primary button</Button>
       <Button btnType="default">Default Button</Button>

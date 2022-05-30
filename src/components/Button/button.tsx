@@ -47,7 +47,6 @@ export const Button: FC<ButtonProps> = (props) => {
         dom.style.setProperty("--btn-primary", colors[3]);
         if(dom.style.getPropertyValue("--btn-primary-hover")===colors[2]) continue;
         dom.style.setProperty("--btn-primary-hover", colors[2]);
-        console.log('执行换色',dom,"个数",document.getElementsByClassName("btn").length,dom.style.getPropertyValue("--textcolor"));
       }
     }
   })

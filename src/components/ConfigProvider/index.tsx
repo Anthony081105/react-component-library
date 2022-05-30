@@ -20,7 +20,6 @@ export const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
 
     if (colors) {
         let gradientColors = gradientColor(colors[0],colors[1],4);
-        console.log('颜色',gradientColors);
         configure.colors = gradientColors;
     }
     

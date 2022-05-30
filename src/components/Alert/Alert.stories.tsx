@@ -5,9 +5,9 @@ import Alert from './alert'
 import ConfigProvider from '../ConfigProvider'
 
 export const defaultAlert = () => (
-  <ConfigProvider colors={["#fff",'#31d131']}>
+  // <ConfigProvider colors={["#fff",'#31d131']}>
     <Alert closable title="this is alert!" type="primary" />
-  </ConfigProvider>
+  // </ConfigProvider>
 )
 
 export const alertWithType = () => (

@@ -96,15 +96,15 @@
   background: $white;
   border-color: $gray-400;
   &:hover {
-    color: $primary;
+    color: var(--btn-primary,$primary);
     background: lighten($white, 10%);
-    border-color: lighten($primary,7.5%);
+    border-color: var(--btn-primary-hover,lighten($primary,7.5%));
   }
   &:focus,
   &.focus {
-    color: $primary;
+    color: var(--btn-primary,$primary);
     background: lighten($white, 10%);
-    border-color: lighten($primary,7.5%);
+    border-color: var(--btn-primary-hover,lighten($primary,7.5%));
   }
   &:disabled,
   &.disabled {
@@ -116,11 +116,11 @@
 
 .btn-link {
   font-weight: $font-weight-normal;
-  color: $btn-link-color;
+  color: var(--btn-primary,$primary);
   text-decoration: $link-decoration;
   box-shadow: none;
   &:hover {
-    color: $btn-link-hover-color;
+    color: var(--btn-primary-hover,$btn-link-hover-color);
     text-decoration: $link-hover-decoration;
   }
   &:focus,

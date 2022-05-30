@@ -1,41 +1,45 @@
 // 颜色阶梯算法，用于获取自定义颜色风格下，不同色阶下的对应颜色
 function gradientColor(startColor, endColor, step) {
-  let startRGB = colorRgb(startColor); //转换为rgb数组模式
+  let startRGB = colorRgbDecompose(startColor); //转换为rgb数组模式
+  console.log('startRGB',startRGB);
   let startR = startRGB[0];
   let startG = startRGB[1];
   let startB = startRGB[2];
 
-  let endRGB = colorRgb(endColor);
+  let endRGB = colorRgbDecompose(endColor);
   let endR = endRGB[0];
   let endG = endRGB[1];
   let endB = endRGB[2];
 
-  let sR = (endR - startR) / step; //总差值
-  let sG = (endG - startG) / step;
-  let sB = (endB - startB) / step;
+  let averageR = (endR - startR) / step; //总差值
+  let averageG = (endG - startG) / step;
+  let averageB = (endB - startB) / step;
 
   var colorArr = [];
   for (var i = 0; i < step; i++) {
     //计算每一步的hex值
     var hex = colorHex(
       "rgb(" +
-        parseInt(sR * i + startR) +
+        parseInt(averageR * i + startR) +
         "," +
-        parseInt(sG * i + startG) +
+        parseInt(averageG * i + startG) +
         "," +
-        parseInt(sB * i + startB) +
+        parseInt(averageB * i + startB) +
         ")"
     );
+    console.log('得到hex',hex);
     colorArr.push(hex);
   }
   return colorArr;
 }
 
-// 将hex表示方式转换为rgb表示方式(这里返回rgb数组模式)
-function colorRgb(sColor) {
+// 将hex表示方式转换为rgb表示方式并实现rgb三色的分解(这里返回rgb数组模式)
+function colorRgbDecompose(hexColor) {
+  console.log('coloRgb');
+  // 颜色值合法性校验reg
   var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
   // eslint-disable-next-line no-redeclare
-  var sColor = sColor.toLowerCase();
+  var sColor = hexColor.toLowerCase();
   if (sColor && reg.test(sColor)) {
     if (sColor.length === 4) {
       var sColorNew = "#";
@@ -47,8 +51,10 @@ function colorRgb(sColor) {
     //处理六位的颜色值
     var sColorChange = [];
     for (var i = 1; i < 7; i += 2) {
+      // 进制转换
       sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
     }
+    console.log('sColorChange',sColorChange);
     return sColorChange;
   } else {
     return sColor;
@@ -57,7 +63,7 @@ function colorRgb(sColor) {
 
 // 将rgb表示方式转换为hex表示方式
 function colorHex(rgb) {
-  console.log('转换rgb',rgb);
+  console.log('colorHex');
   var _this = rgb;
   var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
   if (/^(rgb|RGB)/.test(_this)) {
@@ -74,7 +80,6 @@ function colorHex(rgb) {
     if (strHex.length !== 7) {
       strHex = _this;
     }
-    console.log('return1',strHex);
     return strHex;
   } else if (reg.test(_this)) {
     var aNum = _this.replace(/#/, "").split("");
@@ -85,7 +90,6 @@ function colorHex(rgb) {
       for (var i = 0; i < aNum.length; i += 1) {
         numHex += aNum[i] + aNum[i];
       }
-      console.log('returnhex',numHex);
       return numHex;
     }
   } else {

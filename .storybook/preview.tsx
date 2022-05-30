@@ -18,7 +18,6 @@ const wrapperStyle: React.CSSProperties = {
 // 定义内容居中的组件
 const StoryWrapper = (storyFn: any) => (
   <div style={wrapperStyle}>
-    <h3>组件演示</h3>
     {storyFn()}
   </div>
 )
